@@ -39,6 +39,8 @@
 
 #define ONESHOT_TIMEOUT 500
 #define RETRO_TAPPING
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 100
 
 /* key combination for command */
 #define IS_COMMAND() ( \
