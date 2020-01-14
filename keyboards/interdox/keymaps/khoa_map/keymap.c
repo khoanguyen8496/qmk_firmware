@@ -9,7 +9,7 @@ extern keymap_config_t keymap_config;
 #define DEF 0
 #define FN1 2
 #define FN2 1
-#define SPC_LT LT(FN1,KC_SPC) // layer toggle hold with SPACE
+#define SPC_LT LT(FN2,KC_SPC) // layer toggle hold with SPACE
 /* #define SFT_OB MT(MOD_LSFT, KC_LPRN)  // mod toggle open brace */
 /* #define SFT_CB MT(MOD_RSFT, KC_RPRN)  // mod toggle close brace */
 #define CTL(a) MT(MOD_LCTL, a)
@@ -25,11 +25,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    , KC_PGUP,                          KC_HOME ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    , KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LGUI ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    , KC_PGDN,                          KC_END  ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,KC_ENT,
+     KC_LCTL ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    , KC_PGDN,                          KC_END  ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,CTL(KC_ENT),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,TG(FN1) ,TG(FN2) ,         KC_MINS, KC_EQL ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_LCTL ,KC_LEFT ,KC_RGHT ,KC_LALT ,      MO(FN2),    KC_SPC   ,KC_SPC  ,        KC_SPC ,KC_SPC  ,    MO(FN2) ,     KC_RALT , KC_UP  ,KC_DOWN , KC_RCTL
+     KC_LEFT ,KC_RGHT ,KC_LGUI ,KC_LALT ,      KC_SPC ,    OSL(FN2), SPC_LT ,         SPC_LT ,OSL(FN2),    KC_SPC  ,     KC_RALT , KC_RGUI, KC_UP  ,KC_DOWN
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 

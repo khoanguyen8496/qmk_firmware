@@ -38,9 +38,9 @@
 //#define BACKLIGHT_LEVELS 3
 
 #define ONESHOT_TIMEOUT 500
-#define RETRO_TAPPING
+//#define RETRO_TAPPING
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 100
+#define TAPPING_TERM 200
 
 /* key combination for command */
 #define IS_COMMAND() ( \
