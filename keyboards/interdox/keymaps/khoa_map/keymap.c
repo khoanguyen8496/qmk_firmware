@@ -14,6 +14,8 @@ extern keymap_config_t keymap_config;
 /* #define SFT_CB MT(MOD_RSFT, KC_RPRN)  // mod toggle close brace */
 #define CTL(a) MT(MOD_LCTL, a)
 #define ALT(a) MT(MOD_LALT, a)
+#define GUI(a) MT(MOD_LGUI, a)
+#define SFT(a) MT(MOD_LSFT, a)
 
 // Shortcut to make keymap more readable
 
@@ -21,15 +23,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [DEF] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_EQL  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7,    KC_8    ,KC_9    ,KC_0    ,KC_MINS ,
+     KC_ESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7,    KC_8    ,KC_9    ,KC_0    ,KC_BSPC ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    , TG(SYM),                          TG(SYM) ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    , KC_BSLS,
+     KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    , KC_EQL ,                          KC_MINS ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    , KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC  ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    , KC_LBRC,                          KC_RBRC ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,KC_QUOTE,
+     KC_QUOTE,CTL(KC_A),KC_S    ,KC_D    , KC_F   ,KC_G    , KC_LBRC,                          KC_RBRC ,KC_H    ,KC_J    ,KC_K    ,KC_L  ,CTL(KC_SCLN),KC_ENT  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT,CTL(KC_Z),KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_LGUI ,AG_SWAP ,         AG_NORM, KC_LALT ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT,CTL(KC_SLSH) ,KC_RSFT ,
+     KC_LSFT ,KC_Z    ,KC_X    ,KC_C   ,GUI(KC_V),ALT(KC_B),KC_LCBR ,AG_SWAP,        AG_NORM ,KC_RCBR ,ALT(KC_N),GUI(KC_M),KC_COMM,KC_DOT  ,KC_SLSH,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_HOME ,KC_END  , KC_PGUP, KC_PGDN,     TG(MSC) ,      KC_SPC, KC_BSPC,         KC_BSPC,KC_ENT  ,      TG(MSC)    , KC_LEFT,KC_UP   ,KC_DOWN , KC_RGHT
+     TG(SYM) ,KC_HOME ,KC_END  , KC_PGUP,      KC_PGDN,      KC_SPC, KC_GRV ,         _______, KC_SPC ,    KC_LEFT ,      KC_UP  ,KC_DOWN , KC_RGHT, TG(MSC)
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -43,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,KC_PERC ,KC_CIRC ,KC_LBRC ,KC_RBRC ,KC_TILDE,_______ , _______,        _______ ,_______ ,_______ ,KC_P1   ,KC_P2   ,KC_P3   ,KC_BSLS ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,_______ ,        _______ ,_______ ,    _______ ,     KC_DOT  ,KC_P0   ,KC_EQL  ,_______
+     _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,_______ ,        RESET   ,_______ ,    _______ ,     KC_DOT  ,KC_P0   ,KC_EQL  ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
    [MSC] = LAYOUT(
@@ -64,14 +66,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
 /*   switch (keycode) { */
-/*     case LOWER: */
+/*     case DEF: */
 /*       if (record->event.pressed) { */
-/*         layer_on(_LOWER); */
+/*         layer_on(); */
 /*         update_tri_layer(_LOWER, _RAISE, _ADJUST); */
 /*       } else { */
 /*         layer_off(_LOWER); */
 /*         update_tri_layer(_LOWER, _RAISE, _ADJUST); */
-/*       } _____________________*/
+/*       } _____________________ */
 /*       return false; */
 /*       break; */
 /*     case RAISE: */
